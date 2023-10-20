@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+ 
+  
+    <h:head>
+        <h:outputScript name ="script.js" library="js"/>
+        <h:outputStylesheet name ="default.css" library="css"/>
+        <h:outputStylesheet name ="theme.css" library="css"/>
+    </h:head>
+    
+     <h:body>    
+         <style>                
+        .wrapper{
+           position: relative;
+           width: 99%;
+           height: 35%;
+           display: flex; 
+           justify-content: center;
+          
+           grid-template-columns: 1fr 1fr;
+           border: 3px solid #00ffff;
+           box-shadow: 0 0 50px 0 #00a6bc;
+           
+           flex-direction: column;
+           justify-content: center;
+           align-items: center;          
+           
+           }    
+           
+           body{
+               background-color:darkslategray;
+           }
+            .contenedor {
+                width: 99%;
+                height: 30%;
+                display: flex;
+                justify-content: center;
+                
+            font-size: 35px;
+            font-family: sans-serif;
+            color:#00ffff;
+            font-weight: bold;
+            justify-content: center;
+            }
+            .botones{
+            font-size: 35px;
+            font-family: sans-serif;
+            color:#0069a0;
+            font-weight: bold;
+          } 
+           
+        </style>
+         <br></br>
+         <h1 class="contenedor">PRODUCTOS</h1>        
+         <br></br>
+         
+    <h:form class="wrapper">              
+        <br></br>     
+        <!-- construccion para la insecion y actualizacion de datos -->  
+     <p:panelGrid columns="2" >
+        <p:outputLabel class="botones" value="Id"/>
+        <p:inputText id="idProducto" value="#{bkn_Productos.idRegistro}" placeholder="Para Actualizar"  /> 
+        <p:outputLabel class="botones" value="Nombre"/>
+        <p:inputText value="#{bkn_Productos.datosInsert.nombre}"  />
+        <p:outputLabel class="botones" value="Descripcion"/>        
+        <p:inputText value="#{bkn_Productos.datosInsert.descripcion}"    />
+        <p:outputLabel class="botones" value="Precio"/>
+        <p:inputText value="#{bkn_Productos.datosInsert.precio}"  />
+        <p:outputLabel class="botones" value="Cantidad"/>
+        <p:inputText value="#{bkn_Productos.datosInsert.cantidad}"  />
+        
+        <p:commandButton class="botones" value="Insertar" actionListener="#{bkn_Productos.insertaDatos()}" />
+        <p:commandButton class="botones" value="Actualizar"  actionListener="#{bkn_Productos.actualizarDatos()}"    />
+        <p:commandButton class="botones" id="btnInicio" value="Volver" action="Menu_inicio.xhtml"/>
+    </p:panelGrid> 
+    <br></br> 
+   </h:form>
+        
+          
+   <br></br>
+    <h:form class="botones">
+    <!-- construccion de la tabla que muestra los datos de la BD detalles ordenes -->  
+    <p:dataTable id="tblLista" value="#{bkn_Productos.lista}" var="item">
+         <p:column headerText="Id" >
+         <p:outputLabel value="#{item.id}" />
+         </p:column>
+         <p:column headerText="Nombre" >
+         <p:outputLabel value="#{item.nombre}" />
+         </p:column>
+         <p:column headerText="Descripcion">  
+         <p:outputLabel value="#{item.descripcion}"/>
+         </p:column>
+         <p:column headerText="precio">
+         <p:outputLabel value="#{item.precio}" /> 
+         </p:column>      
+         <p:column headerText="cantidad">
+         <p:outputLabel value="#{item.cantidad}" /> 
+         </p:column>   
+    </p:dataTable>   <!-- final de la tabla -->                             
+    </h:form>
+    </h:body>
+</html>

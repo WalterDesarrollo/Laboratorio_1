@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+ 
+  
+    <h:head>
+        <h:outputScript name ="script.js" library="js"/>
+        <h:outputStylesheet name ="default.css" library="css"/>
+        <h:outputStylesheet name ="theme.css" library="css"/>
+    </h:head>
+    
+     <h:body>   
+     <style>                
+        .wrapper{
+           position: relative;
+           width: 99%;
+           height: 35%;
+           display: flex; 
+           justify-content: center;
+          
+           grid-template-columns: 1fr 1fr;
+           border: 3px solid #00ffff;
+           box-shadow: 0 0 50px 0 #00a6bc;
+           
+           flex-direction: column;
+           justify-content: center;
+           align-items: center;          
+           
+           }    
+           
+           body{
+               background-color:darkslategray;
+           }
+            .contenedor {
+                width: 99%;
+                height: 30%;
+                display: flex;
+                justify-content: center;
+                
+            font-size: 35px;
+            font-family: sans-serif;
+            color:#00ffff;
+            font-weight: bold;
+            justify-content: center;
+            }
+            .botones{
+            font-size: 35px;
+            font-family: sans-serif;
+            color:#0069a0;
+            font-weight: bold;
+          } 
+           
+        </style>
+         <br></br>
+         <h1 class="contenedor">ORDENES</h1>        
+         <br></br>
+  <h:form class="wrapper">     
+        <br></br> <br></br>    
+     <p:panelGrid columns="2" >
+        <p:outputLabel class="botones" value="Id"/>
+        <p:inputText id="idOrden" value="#{bkn_Ordenes.idInsert}" placeholder="Para Actualizar"  />
+        <p:outputLabel class="botones" value="Cliente_id"/>
+        <p:inputText value="#{bkn_Ordenes.datosInsert.cliente_id}"  />
+        <p:outputLabel class="botones" value="Fecha"/>
+        <p:inputText value="#{bkn_Ordenes.datosInsert.fecha}"    />
+        <p:outputLabel class="botones" value="Total"/>
+        <p:inputText value="#{bkn_Ordenes.datosInsert.total}"  />
+        
+        <p:commandButton class="botones" value="Insertar" actionListener="#{bkn_Ordenes.insertaDatos()}" />
+        <p:commandButton class="botones" value="Actualizar"  actionListener="#{bkn_Ordenes.actualizarDatos()}"    />
+        <p:commandButton class="botones" id="btnInicio" value="Volver" action="Menu_inicio.xhtml"/>
+    </p:panelGrid> 
+     <br></br> <br></br>      
+   </h:form>
+        
+        <br></br>  
+        <br></br> 
+   <h:form class="botones">
+    <!-- construccion de la tabla que muestra los datos de la BD detalles ordenes -->  
+     <p:dataTable id="tblLista" value="#{bkn_Ordenes.lista}" var="item">
+         <p:column headerText="Id" >
+         <p:outputLabel value="#{item.id}" />
+         </p:column>
+         <p:column headerText="Cliente_Id" >
+         <p:outputLabel value="#{item.cliente_id}" />
+         </p:column>
+         <p:column headerText="Fecha">  
+         <p:outputLabel value="#{item.fecha}"/>
+         </p:column>
+         <p:column headerText="Total">
+         <p:outputLabel value="#{item.total}" /> 
+         </p:column>      
+     </p:dataTable>   <!-- final de la tabla -->                         
+    </h:form>
+   </h:body>
+</html>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+   <h:head>
+        <h:outputScript name ="script.js" library="js"/>
+        <h:outputStylesheet name ="default.css" library="css"/>
+        <h:outputStylesheet name ="theme.css" library="css"/>
+    </h:head>
+    <h:body>
+        <style>       
+                    .title {
+            font-size: 35px;
+            font-family: sans-serif;
+            color:#00ffff;
+            font-weight: bold;
+          }    
+            .botones{
+            font-size: 35px;
+            font-family: sans-serif;
+            color:#0069a0;
+            font-weight: bold;
+          } 
+           body{
+               background-color:activeborder;
+           }
+           
+           .nuevoDiseño{
+           position: relative;
+           width: 99%;
+           height: 30%;
+           display: flex; 
+           justify-content: center;
+          
+           grid-template-columns: 1fr 1fr;
+           border: 3px solid #00ffff;
+           box-shadow: 0 0 50px 0 #00a6bc;
+           
+           flex-direction: column;
+           justify-content: center;
+           align-items: center;          
+           }  
+           
+         
+           
+        </style>      
+    
+            <br></br> <br></br> <br></br> 
+            <br></br> <br></br> <br></br>  
+
+            <h:form class="nuevoDiseño">
+                <h1 class="title">SALA DE VENTAS</h1>
+                <br></br>
+                <p:panelGrid columns="2"  >     
+                    <p:outputLabel class="botones" value="Clientes"/>
+                    <p:commandButton class="botones" id="btnCliente" value="Visitar" action="InicioUI.xhtml"/>
+                     <p:outputLabel class="botones" value="Detalle Ordenes"/>
+                    <p:commandButton class="botones" id="btDeOrden" value="Visitar" action="DetallesOrdens.xhtml"  />
+                     <p:outputLabel  class="botones" value="Ordenes"/>
+                    <p:commandButton class="botones" id="btnOrden" value="Visitar"  action="Ordenes.xhtml" />
+                    <p:outputLabel  class="botones" value="Productos"/>
+                    <p:commandButton class="botones" id="btnProducto" value="Visitar" action="Productos.xhtml"/>
+                </p:panelGrid>
+                <br></br>        
+                <br></br>  
+            </h:form>
+      
+
+    </h:body>
+</html>

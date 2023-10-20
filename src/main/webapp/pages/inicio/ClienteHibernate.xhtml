@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+ 
+  
+    <h:head>
+        <h:outputScript name ="script.js" library="js"/>
+        <h:outputStylesheet name ="default.css" library="css"/>
+        <h:outputStylesheet name ="theme.css" library="css"/>
+    </h:head>
+    
+     <h:body>
+     <style>                
+        .wrapper{
+           position: relative;
+           width: 99%;
+           height: 35%;
+           display: flex; 
+           justify-content: center;
+          
+           grid-template-columns: 1fr 1fr;
+           border: 3px solid #00ffff;
+           box-shadow: 0 0 50px 0 #00a6bc;
+           
+           flex-direction: column;
+           justify-content: center;
+           align-items: center;    
+           font-weight: bold;
+           font-size: 35px;
+           
+           }    
+           
+           body{
+               background-color:darkslategray;
+           }
+            .contenedor {
+                width: 99%;
+                height: 30%;
+                display: flex;
+                justify-content: center;
+                
+            font-size: 35px;
+            font-family: sans-serif;
+            color:#00ffff;
+            font-weight: bold;
+            justify-content: center;
+            }
+             .botones{
+            font-size: 35px;
+            font-family: sans-serif;
+            color:#0069a0;
+            font-weight: bold;
+          } 
+          
+           .table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        background-color: darkslategray;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        
+        grid-template-columns: 1fr 1fr;
+        border: 3px solid #00ffff;
+        box-shadow: 0 0 50px 0 #00a6bc;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        font-size: 35px;
+        color: white;
+      }
+   
+            th, td {
+        padding: 10px;
+        text-align: center;
+        border: 3px solid #ffffff;
+      }
+
+      th {
+        background-color:#ffffff;
+        color:#ffffff;
+      }
+                     
+      
+     </style>
+         <br></br>
+         <h1 class="contenedor">CLIENTES</h1>        
+         <br></br>                    
+    <h:form class="wrapper">        
+                <br></br>
+     <p:panelGrid columns="2" >              
+        <p:outputLabel class="botones" value="Id"/>
+        <p:inputText id="idCliente" value="#{bkn_Cliente.datosInsert.id}" placeholder="Para Actualizar"  />
+        <p:outputLabel class="botones" value="Nombre"/>
+        <p:inputText value="#{bkn_Cliente.datosInsert.nombre}"  />
+        <p:outputLabel class="botones" value="Correo"/>
+        <p:inputText value="#{bkn_Cliente.datosInsert.correo}"    />
+        <p:outputLabel class="botones" value="Direccion"/>
+        <p:inputText value="#{bkn_Cliente.datosInsert.direccion}"  />
+        <p:outputLabel class="botones" value="Telefono"/>
+        <p:inputText value="#{bkn_Cliente.datosInsert.telefono}"   />
+        
+        <p:commandButton class="botones" value="Insertar" actionListener="#{bkn_Cliente.insertarCliente()}" />
+        <p:commandButton class="botones" value="Actualizar"  actionListener="#{bkn_Cliente.actualizarCliente()}"  /> 
+        <p:commandButton class="botones" value="Eliminar" actionListener="#{bkn_Cliente.eliminarCliente()}"/>
+      <p:commandButton class="botones" id="btnInicio" value="Volver" action="Menu_inicio.xhtml"/>
+    </p:panelGrid>  
+   <br></br>
+ </h:form>
+                
+         <br></br>         
+     <h:form class="table">
+    <!-- construccion de la tabla que muestra los datos de la BD ventas_clientes -->        
+    <h:dataTable value="#{bkn_Cliente.lista}" var="item">
+      <p:column headerText="Id" >
+          <p:outputLabel value="#{item.id}" />
+            </p:column>
+            <p:column headerText="Nombre" >
+            <p:outputLabel value="#{item.nombre}" />
+            </p:column>
+            <p:column headerText="Correo">  
+            <p:outputLabel value="#{item.correo}"/>
+            </p:column>
+            <p:column headerText="Dirección">
+            <p:outputLabel value="#{item.direccion}" /> 
+            </p:column>
+            <p:column headerText="Teléfono">
+            <p:outputLabel value="#{item.telefono}" />
+            </p:column>
+       </h:dataTable>   <!-- final de la tabla -->                                
+         </h:form>         
+        </h:body>
+     </html>
